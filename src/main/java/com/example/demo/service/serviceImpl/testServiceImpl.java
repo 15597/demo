@@ -58,7 +58,6 @@ public class testServiceImpl implements testService {
                 return true;
             }
         } catch (Exception e) {
-            String s= "asdad";
             e.printStackTrace();
             log.error("导出数据到本地出现的异常为:"+e.toString());
         }
