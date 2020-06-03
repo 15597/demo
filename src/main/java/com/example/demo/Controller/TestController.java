@@ -22,9 +22,9 @@ public class TestController {
     public String MoveDateToLocal(@PathVariable String sqlStr) {
         if (!sqlStr.isEmpty()) {
             boolean flag = testService.moveDateToLocal(sqlStr);
-            if(flag){
+            if (flag) {
                 return "执行成功";
-            }else {
+            } else {
                 return "执行失败";
             }
         }
@@ -32,10 +32,10 @@ public class TestController {
     }
 
     @GetMapping("/{fileName}/{loadType}")
-    public String moveToHive(@PathVariable String fileName , @PathVariable Integer loadType){
-        if (fileName!=null&&loadType!=null) {
-            return testService.moveToHive(fileName,loadType);
-        }else {
+    public String moveToHive(@PathVariable String fileName, @PathVariable Integer loadType) {
+        if (fileName != null && loadType != null) {
+            return testService.moveToHive(fileName, loadType);
+        } else {
             return "请输入正确的参数";
         }
     }
