@@ -1,0 +1,53 @@
+spring:
+  datasource:
+    mysqlMain: #mysql主数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        password: root
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.200.128:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+        username: root
+    hive: #hive数据源
+        url: jdbc:hive2://192.168.200.128:10000/myhive
+        type: com.alibaba.druid.pool.DruidDataSource
+        username: root
+        password: root
+        DBName: myhive
+        driver-class-name: org.apache.hive.jdbc.HiveDriver
+    common-config: #连接池统一配置，应用到所有的数据源
+        initialSize: 1
+        minIdle: 1
+        maxIdle: 5
+        maxActive: 50
+        maxWait: 10000
+        timeBetweenEvictionRunsMillis: 10000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+      # 解决中文乱码的问题
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+server:
+  port: 80
+  tomcat:
+    uri-encoding: UTF-8
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#导出hive数据到本地的路径
+files:
+  name: /usr/
+#日志级别以及日志文件的路径
+logging:
+  level:
+    root: info
+  pattern:
+    file: '%d{yyyy/MM/dd-HH:mm} [%thread] %-5level %logger- %msg%n'
+  path: D:\sss\mylog.log
+
